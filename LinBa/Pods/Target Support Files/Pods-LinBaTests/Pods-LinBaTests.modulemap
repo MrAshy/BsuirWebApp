@@ -1,0 +1,6 @@
+framework module Pods_LinBaTests {
+  umbrella header "Pods-LinBaTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
