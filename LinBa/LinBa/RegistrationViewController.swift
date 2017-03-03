@@ -27,7 +27,12 @@ class RegistrationViewController: UIViewController {
     }
     
     @IBAction func enterSignUp(_ sender: UIButton) {
+        ServerAPI.sharedInstance.createUser(fullName: tfFullname.text!, password: tfPassword.text!).subscribe(onNext: { (token) in
+            print(token)
+        })
     }
+        
+    
     
     @IBAction func enterCancel(_ sender: UIButton) {
     }

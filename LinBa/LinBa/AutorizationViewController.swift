@@ -15,6 +15,7 @@ class AvtorizationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -29,6 +30,17 @@ class AvtorizationViewController: UIViewController {
     }
     
     @IBAction func enterSignIn(_ sender: UIButton) {
+         (ServerAPI.sharedInstance.logIn(fullName: tfFullName.text!, password: tfPassword.text!)).subscribe(onNext: { (success) in
+            
+            print("Success")
+            ServerAPI.sharedInstance.getFilms().subscribe(onNext: { (films) in
+                print("\(films)")
+            })
+         })
+    
+        
+            //self.navigationController?.pushViewController(favoriteVC, animated: true)
+        
     }
     
 }

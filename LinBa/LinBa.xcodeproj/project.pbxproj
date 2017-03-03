@@ -17,8 +17,18 @@
 		DE3516EC1E48D99B008EF2B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE3516EA1E48D99B008EF2B7 /* LaunchScreen.storyboard */; };
 		DE3516F71E48D99B008EF2B7 /* LinBaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3516F61E48D99B008EF2B7 /* LinBaTests.swift */; };
 		DE3517021E48D99B008EF2B7 /* LinBaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3517011E48D99B008EF2B7 /* LinBaUITests.swift */; };
+		DE3EA7DA1E6730C00047761A /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3EA7D91E6730C00047761A /* Film.swift */; };
+		DE3EA7DC1E6732D10047761A /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3EA7DB1E6732D10047761A /* Actor.swift */; };
+		DE3EA7DE1E6733970047761A /* Producer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3EA7DD1E6733970047761A /* Producer.swift */; };
+		DE3EA7E01E6738650047761A /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3EA7DF1E6738650047761A /* APIError.swift */; };
+		DE4987D31E689A830041DC80 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4987D21E689A830041DC80 /* FavoriteTableViewCell.swift */; };
+		DE7CB3971E6801F4009CAA0D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7CB3961E6801F4009CAA0D /* FavoritesViewController.swift */; };
+		DE7CB39A1E680533009CAA0D /* EntitiesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7CB3991E680533009CAA0D /* EntitiesParser.swift */; };
+		DE7CB39C1E681366009CAA0D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7CB39B1E681366009CAA0D /* User.swift */; };
 		DEFBA99D1E520E1D002A99E6 /* AutorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFBA99C1E520E1D002A99E6 /* AutorizationViewController.swift */; };
 		DEFBA99F1E52166E002A99E6 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFBA99E1E52166E002A99E6 /* RegistrationViewController.swift */; };
+		DEFBA9A11E521A0A002A99E6 /* ServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFBA9A01E521A0A002A99E6 /* ServerAPI.swift */; };
+		DEFFD68D1E533C7500733191 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFFD68C1E533C7500733191 /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,8 +69,18 @@
 		DE3516FD1E48D99B008EF2B7 /* LinBaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinBaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE3517011E48D99B008EF2B7 /* LinBaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinBaUITests.swift; sourceTree = "<group>"; };
 		DE3517031E48D99B008EF2B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE3EA7D91E6730C00047761A /* Film.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
+		DE3EA7DB1E6732D10047761A /* Actor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
+		DE3EA7DD1E6733970047761A /* Producer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Producer.swift; sourceTree = "<group>"; };
+		DE3EA7DF1E6738650047761A /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		DE4987D21E689A830041DC80 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		DE7CB3961E6801F4009CAA0D /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		DE7CB3991E680533009CAA0D /* EntitiesParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntitiesParser.swift; sourceTree = "<group>"; };
+		DE7CB39B1E681366009CAA0D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DEFBA99C1E520E1D002A99E6 /* AutorizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutorizationViewController.swift; sourceTree = "<group>"; };
 		DEFBA99E1E52166E002A99E6 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		DEFBA9A01E521A0A002A99E6 /* ServerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerAPI.swift; sourceTree = "<group>"; };
+		DEFFD68C1E533C7500733191 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		EA30F07FD916E59C1F502E8E /* Pods-LinBa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LinBa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LinBa/Pods-LinBa.debug.xcconfig"; sourceTree = "<group>"; };
 		FBCB563AE328BAA152A0F2A0 /* Pods-LinBaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LinBaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LinBaUITests/Pods-LinBaUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,6 +161,9 @@
 		DE3516E01E48D99B008EF2B7 /* LinBa */ = {
 			isa = PBXGroup;
 			children = (
+				DE4987CE1E68935F0041DC80 /* Api */,
+				DE7CB3981E680521009CAA0D /* Parser */,
+				DE3EA7D81E6730B00047761A /* Entity */,
 				DEFBA99B1E520E05002A99E6 /* views */,
 				DE3516E11E48D99B008EF2B7 /* AppDelegate.swift */,
 				DE3516E31E48D99B008EF2B7 /* ViewController.swift */,
@@ -148,6 +171,7 @@
 				DE3516E81E48D99B008EF2B7 /* Assets.xcassets */,
 				DE3516EA1E48D99B008EF2B7 /* LaunchScreen.storyboard */,
 				DE3516ED1E48D99B008EF2B7 /* Info.plist */,
+				DEFFD68C1E533C7500733191 /* WebViewController.swift */,
 			);
 			path = LinBa;
 			sourceTree = "<group>";
@@ -170,11 +194,49 @@
 			path = LinBaUITests;
 			sourceTree = "<group>";
 		};
+		DE3EA7D81E6730B00047761A /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				DE3EA7D91E6730C00047761A /* Film.swift */,
+				DE3EA7DB1E6732D10047761A /* Actor.swift */,
+				DE3EA7DD1E6733970047761A /* Producer.swift */,
+				DE3EA7DF1E6738650047761A /* APIError.swift */,
+				DE7CB39B1E681366009CAA0D /* User.swift */,
+			);
+			name = Entity;
+			sourceTree = "<group>";
+		};
+		DE4987CE1E68935F0041DC80 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				DEFBA9A01E521A0A002A99E6 /* ServerAPI.swift */,
+			);
+			name = Api;
+			sourceTree = "<group>";
+		};
+		DE4987CF1E689A4C0041DC80 /* TBCells */ = {
+			isa = PBXGroup;
+			children = (
+				DE4987D21E689A830041DC80 /* FavoriteTableViewCell.swift */,
+			);
+			name = TBCells;
+			sourceTree = "<group>";
+		};
+		DE7CB3981E680521009CAA0D /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				DE7CB3991E680533009CAA0D /* EntitiesParser.swift */,
+			);
+			name = Parser;
+			sourceTree = "<group>";
+		};
 		DEFBA99B1E520E05002A99E6 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				DE4987CF1E689A4C0041DC80 /* TBCells */,
 				DEFBA99C1E520E1D002A99E6 /* AutorizationViewController.swift */,
 				DEFBA99E1E52166E002A99E6 /* RegistrationViewController.swift */,
+				DE7CB3961E6801F4009CAA0D /* FavoritesViewController.swift */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -463,10 +525,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE7CB3971E6801F4009CAA0D /* FavoritesViewController.swift in Sources */,
 				DEFBA99D1E520E1D002A99E6 /* AutorizationViewController.swift in Sources */,
+				DEFFD68D1E533C7500733191 /* WebViewController.swift in Sources */,
+				DE3EA7E01E6738650047761A /* APIError.swift in Sources */,
+				DE3EA7DE1E6733970047761A /* Producer.swift in Sources */,
+				DE4987D31E689A830041DC80 /* FavoriteTableViewCell.swift in Sources */,
+				DE7CB39C1E681366009CAA0D /* User.swift in Sources */,
 				DE3516E41E48D99B008EF2B7 /* ViewController.swift in Sources */,
+				DEFBA9A11E521A0A002A99E6 /* ServerAPI.swift in Sources */,
 				DEFBA99F1E52166E002A99E6 /* RegistrationViewController.swift in Sources */,
+				DE3EA7DA1E6730C00047761A /* Film.swift in Sources */,
+				DE7CB39A1E680533009CAA0D /* EntitiesParser.swift in Sources */,
 				DE3516E21E48D99B008EF2B7 /* AppDelegate.swift in Sources */,
+				DE3EA7DC1E6732D10047761A /* Actor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
