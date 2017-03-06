@@ -13,22 +13,29 @@ import Alamofire
 
 class EntitiesParser {
     
-    let URL = "http://192.168.2.121"
+    let URL = "http://192.168.137.221"
     
-    func getResponse(uri: String, params: Dictionary<String, AnyObject>, method: HTTPMethod) -> Observable<Dictionary<String, AnyObject>>? {
+    func getResponse(uri: String, params: Dictionary<String, AnyObject>, method: HTTPMethod, encoding: ParameterEncoding) -> Observable<Dictionary<String, AnyObject>>? {
         return Observable.create{ observer in
-            Alamofire.request(self.URL+uri, method: method, parameters: params, encoding: URLEncoding(), headers: nil)
+            Alamofire.request(self.URL+uri, method: method, parameters: params, encoding: encoding, headers: nil)
                 .responseString(completionHandler:  { (response) in
                     print("\(response.request?.httpBody)")
-                    let apiError = self.getApiError(response: response.result.value!)
-                    if ((response.error) != nil || apiError != nil) {
-                        observer.on(.error(response.error!))
-                        observer.on(.error(apiError!))
-                    } else {
-                        let objectDictionary = self.getResponseObject(response: response.result.value!)
-                        observer.on(Event.next(objectDictionary!))
-                        observer.on(.completed)
+                    switch response.result {
+                        case .failure(let error):
+                            observer.on(.error(error))
+                            break
+                        case .success(let value):
+                            let apiError = self.getApiError(response: response.result.value!)
+                            if (apiError != nil) {
+                                observer.on(.error(apiError!))
+                            }
+                            else {
+                                let objectDictionary = self.getResponseObject(response: value)
+                                observer.on(Event.next(objectDictionary!))
+                                observer.on(.completed)
+                        }
                     }
+
                 })
             
             return Disposables.create()
@@ -96,11 +103,14 @@ class EntitiesParser {
         return entity
     }
         
-    func getApiError(response: String) -> APIError? {
+    func getApiError(response: String?) -> APIError? {
         var objectError: APIError? = nil
-        let object = responseToNSDictionry(response: response)
-        if let error = (object?.object(forKey: "response") as! NSDictionary).object(forKey: "error") {
-            objectError = error as? APIError
+        if let responseString = response {
+            let object = responseToNSDictionry(response: responseString)
+            if let error = (object?.object(forKey: "response") as! NSDictionary).object(forKey: "error") {
+                let errorDict = error as! Dictionary<String, AnyObject>
+                objectError = APIError(desc: errorDict["dsc"] as! String)
+            }
         }
         return objectError
     }

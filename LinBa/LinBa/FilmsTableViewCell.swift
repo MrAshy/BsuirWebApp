@@ -1,35 +1,46 @@
 //
-//  FavoriteTableViewCell.swift
+//  FimsTableViewCell.swift
 //  LinBa
 //
-//  Created by Kirill Baranov on 02.03.17.
+//  Created by Kirill Baranov on 05.03.17.
 //  Copyright © 2017 Kirill Baranov. All rights reserved.
 //
 
 import UIKit
 import Kingfisher
-import Cosmos
 
+protocol FilmsTrailerDelegate: NSObjectProtocol {
+    func showTrailerView(url: String)
+}
 
+protocol FilmCardDelegate: NSObjectProtocol {
+    func getFilmCard(filmCard: FilmCard)
+}
 
-class FavoriteTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var ivFavoriteFilm: UIImageView!
+class FilmsTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var ivFilm: UIImageView!
+    
     @IBOutlet weak var lFilmName: UILabel!
+   
     @IBOutlet weak var lFilmRating: UILabel!
+
     @IBOutlet weak var lFilmProducer: UILabel!
+  
     @IBOutlet weak var lFilmCountries: UILabel!
     
+    var url: String? = nil
     
-    @IBOutlet weak var ratingStarsView: CosmosView!
+    weak var delegate: FilmsTrailerDelegate?
     
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
     static func reuseIdentifier() -> String {
-        return "FavoriteTableViewCell"
+        return "FilmsTableViewCell"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -38,37 +49,34 @@ class FavoriteTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    
-    @IBAction func showDetailInfo(_ sender: UIButton) {
+    @IBAction func showTriler(_ sender: UIButton) {
+        if delegate != nil {
+            self.delegate?.showTrailerView(url: url!)
+        }
     }
     
-    func setData(favoriteFilmCard: FilmCard) {
-        if let ivFilmItem = ivFavoriteFilm {
-            let url = URL(string: favoriteFilmCard.film.imageLink!)
+    func setData(filmCard: FilmCard) {
+        if let ivFilmItem = ivFilm {
+            let url = URL(string: filmCard.film.imageLink!)
             ivFilmItem.kf.setImage(with: url, placeholder: nil, options: [.transition(ImageTransition.fade(1))], progressBlock: nil
-                , completionHandler: nil)
+            , completionHandler: nil)
         }
         if let lFilmNameItem = lFilmName {
-            lFilmNameItem.text = favoriteFilmCard.film.name! + " \((favoriteFilmCard.film.year!))"
+            lFilmNameItem.text = filmCard.film.name! + " \((filmCard.film.year!))"
         }
         if let lFilmRatingItem = lFilmRating {
-            lFilmRatingItem.text = "rating: " + "\(favoriteFilmCard.film.rate!)"
-            lFilmRatingItem.textColor = setRatingColor(rating: favoriteFilmCard.film.rate!)
+            lFilmRatingItem.text = "rating: " + "\(filmCard.film.rate!)"
+            lFilmRatingItem.textColor = setRatingColor(rating: filmCard.film.rate!)
         }
         if let lFilmProducerItem = lFilmProducer {
-            lFilmProducerItem.text = "producer: " + "\(favoriteFilmCard.producer.name! + " " + favoriteFilmCard.producer.lastName!)"
+            lFilmProducerItem.text = "producer: " + "\(filmCard.producer.name! + " " + filmCard.producer.lastName!)"
         }
         if let lFilmCountriesItem = lFilmCountries {
-            lFilmCountriesItem.text = favoriteFilmCard.film.countries?.joined(separator: ",")
+            lFilmCountriesItem.text = filmCard.film.countries?.joined(separator: ",")
         }
-        
+        self.url = filmCard.film.trailerLink
     }
     
-    func changeRating() {
-        ratingStarsView.didTouchCosmos = { rating in
-            print("\(rating)")
-        }
-    }
     
     func setRatingColor(rating: Double) -> UIColor {
         var rColor: UIColor = .clear
@@ -83,5 +91,6 @@ class FavoriteTableViewCell: UITableViewCell {
         }
         return rColor
     }
+    
 
 }

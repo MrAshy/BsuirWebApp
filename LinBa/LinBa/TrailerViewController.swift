@@ -8,14 +8,16 @@
 
 import UIKit
 
-class WebViewController: UIViewController {
+class TrailerWebViewController: UIViewController {
     
     @IBOutlet weak var webView: UIWebView!
+    
+    var url: String? = nil
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadYoutube(videoID: "0e71Y_3-dQs")
+        loadYoutube(videoID: url!)
     }
     
     override func viewDidAppear(_ animated: Bool) {

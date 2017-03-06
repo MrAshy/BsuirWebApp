@@ -8,6 +8,7 @@ target 'LinBa' do
 	pod ‘RxSwift’
 	pod ‘Kingfisher’
 	pod ‘RxAlamofire’
+	pod 'Cosmos', '~> 8.0'
 
   # Pods for LinBa
 
