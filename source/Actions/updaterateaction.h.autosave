@@ -1,0 +1,13 @@
+#ifndef UPDATERATEACTION_H
+#define UPDATERATEACTION_H
+
+#include "action.h"
+
+class RateAction : public qttp::Action
+{
+public:
+    UpdateRateAction() : qttp::Action() {}
+    const char* getName() const { return "update_rate"; }
+};
+
+#endif // UPDATERATEACTION_H
