@@ -56,7 +56,6 @@ int RateAction::updateRate(const User &user, int filmId, int rate){
     rates.setRate(rate);
     rates.setUserId(user.getId());
     Rate::RateDBController db;
-    //TODO updateFilm
     if(id >= 0){
         return db.update(rates, id);
     }

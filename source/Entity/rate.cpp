@@ -38,7 +38,7 @@ int Rate::RateDBController::update(const Rate& rate, int id){
     {
         QSqlDatabase db = ManagerDB::connect("updateRate");
         if(db.open()){
-            QString queryStr = "UPDATE FilmsDB.UsersRate SET rate=:rate AND userId=:user AND idFilms=:film WHERE userRateId=:id";
+            QString queryStr = "UPDATE FilmsDB.UsersRate SET rate=:rate, userId=:user, idFilms=:film WHERE userRateId=:id";
             QSqlQuery query(db);
             query.prepare(queryStr);
             query.bindValue(":id", id);
@@ -50,7 +50,7 @@ int Rate::RateDBController::update(const Rate& rate, int id){
             db.close();
         }
     }
-    ManagerDB::disconnect("updateRateRate");
+    ManagerDB::disconnect("updateRate");
     return res;
 }
 
