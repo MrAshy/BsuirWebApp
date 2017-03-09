@@ -65,8 +65,14 @@ class AvtorizationViewController: UIViewController, UITextFieldDelegate {
         }, onError: {(error) in
             self.progress.stopAnimating()
             self.progress.isHidden = true
-            let err = error as! APIError
-            self.showAlert(message: err.desc)
+            if error is APIError {
+                let err = error as! APIError
+                self.showAlert(message: err.desc)
+            }
+            else {
+                self.showAlert(message: error.localizedDescription)
+            }
+            
         }).addDisposableTo(disposeBag)
     }
     

@@ -109,11 +109,18 @@ extension FavoritesViewController: FavoriteFilmCellDelegate {
                 //self.showAlert(message: message!, success: true, title: "SUCCESS")
                 self.filmsCardsPresenter.getFavoriteFilmCards()
             }, onError: { (error) in
-                let err = error
-                self.showAlert(message: err.localizedDescription, success: false, title: "FAILED")
+                if error is APIError {
+                    let err = error as! APIError
+                    self.showAlert(message: err.desc, success: false, title: "FAILED")
+                }
+                else {
+                    self.getFilmCardForDelete(filmCard: filmCard)
+                }
             }).addDisposableTo(disposeBag)
         
     }
+    
+    
     
     func getFilmCard(filmCard: FilmCard) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "ActorsViewController") as! ActorsViewController

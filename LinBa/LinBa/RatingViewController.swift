@@ -47,15 +47,24 @@ class RatingViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     }
     
     @IBAction func activatedComplete(_ sender: UIButton) {
+        addRateToFilm()
+    }
+    
+    func addRateToFilm() {
         ServerAPI.sharedInstance.addRateToFilm(filmId: filmId!, rate: Int(rateTextField.text!)!)
             .observeOn(MainScheduler())
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .utility))
             .subscribe(onNext: { (message) in
                 self.showAlert(message: message!, success: true, title: "SUCCESS")
-
+                
             }, onError: {(error) in
-                let err = error
-                self.showAlert(message: err.localizedDescription, success: false, title: "FAILED")
+                if error is APIError {
+                    let err = error as! APIError
+                    self.showAlert(message: err.desc, success: false, title: "FAILED")
+                }
+                else {
+                    self.addRateToFilm()
+                }
             }).addDisposableTo(disposeBag)
     }
     

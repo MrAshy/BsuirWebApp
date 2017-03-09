@@ -47,11 +47,15 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
             .observeOn(MainScheduler())
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .utility))
             .subscribe(onNext: { (message) in
-            print(message)
             self.showAlert(message: message!, success: true, title: "Success")
         }, onError: {(error) in
-            let err = error as! APIError
-            self.showAlert(message: err.desc, success: false, title: "Error")
+            if error is APIError {
+                let err = error as! APIError
+                self.showAlert(message: err.desc, success: false, title: "FAILED")
+            }
+            else {
+                self.showAlert(message: error.localizedDescription, success: false, title: "FAILED")
+            }
         }).addDisposableTo(disposeBag)
         
     }

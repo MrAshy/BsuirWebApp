@@ -21,6 +21,8 @@ class ActorsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.actorTableView.estimatedRowHeight = 90.0
+        self.actorTableView.rowHeight = UITableViewAutomaticDimension
         self.navigationItem.title = "Actors"
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         self.navigationController?.navigationBar.tintColor = .white

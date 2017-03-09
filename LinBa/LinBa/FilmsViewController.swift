@@ -78,8 +78,13 @@ extension FilmsViewController: FilmCardDelegate {
             .subscribe(onNext: { (message) in
                 self.showAlert(message: message!, success: true, title: "SUCCESS")
             }, onError: { (error) in
-                let err = error
-                self.showAlert(message: err.localizedDescription, success: false, title: "FAILED")
+                if error is APIError {
+                    let err = error as! APIError
+                    self.showAlert(message: err.desc, success: false, title: "FAILED")
+                }
+                else {
+                    self.getFilmCard(filmCard: filmCard)
+                }
             }, onCompleted: {() in
                 print("complete add")
             }).addDisposableTo(disposeBag)

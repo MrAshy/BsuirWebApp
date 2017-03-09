@@ -13,7 +13,7 @@ import Alamofire
 
 class EntitiesParser {
     
-    let URL = "http://192.168.0.106"
+    let URL = "http://192.168.2.121"
     
     func getResponse(uri: String, params: Dictionary<String, AnyObject>, method: HTTPMethod, encoding: ParameterEncoding) -> Observable<Dictionary<String, AnyObject>>? {
         return Observable.create{ observer in
