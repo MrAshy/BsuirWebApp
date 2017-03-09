@@ -22,13 +22,19 @@ class FavoritesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.favoritesTableView.estimatedRowHeight = 100.0
+        self.favoritesTableView.rowHeight = UITableViewAutomaticDimension
         self.navigationController?.navigationBar.isHidden = false
+        self.navigationItem.title = "Favorite"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(FavoritesViewController.showFilmsViewController))
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "LogOut", style: .plain, target: self, action: #selector(FavoritesViewController.logOut))
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.tintColor = .white
         filmsCardsPresenter.attachView(view: self)
         self.favoritesTableView.dataSource = favoriteFilmCardsDataSource
         self.favoritesTableView.delegate = favoriteFilmCardsDataSource
         self.favoriteFilmCardsDataSource.favoriteFilmDelegate = self
+        self.favoriteFilmCardsDataSource.observer = self
         
     }
     
@@ -100,12 +106,13 @@ extension FavoritesViewController: FavoriteFilmCellDelegate {
             .observeOn(MainScheduler())
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .utility))
             .subscribe(onNext: { (message) in
-                self.showAlert(message: message!, success: true, title: "SUCCESS")
+                //self.showAlert(message: message!, success: true, title: "SUCCESS")
+                self.filmsCardsPresenter.getFavoriteFilmCards()
             }, onError: { (error) in
                 let err = error
                 self.showAlert(message: err.localizedDescription, success: false, title: "FAILED")
             }).addDisposableTo(disposeBag)
-        filmsCardsPresenter.getFavoriteFilmCards()
+        
     }
     
     func getFilmCard(filmCard: FilmCard) {
@@ -113,6 +120,12 @@ extension FavoritesViewController: FavoriteFilmCellDelegate {
         vc.filmId = filmCard.film.id
         self.navigationController?.pushViewController(vc, animated: true)
     }
+}
 
-
+extension FavoritesViewController: RatingButtonDelegate {
+    func getFilmIdForRate(filmId: Int) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "RatingViewController") as! RatingViewController
+        vc.filmId = filmId
+        self.present(vc, animated: false, completion: nil)
+    }
 }

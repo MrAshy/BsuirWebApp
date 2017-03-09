@@ -13,13 +13,13 @@ import Alamofire
 
 class EntitiesParser {
     
-    let URL = "http://192.168.137.221"
+    let URL = "http://192.168.0.106"
     
     func getResponse(uri: String, params: Dictionary<String, AnyObject>, method: HTTPMethod, encoding: ParameterEncoding) -> Observable<Dictionary<String, AnyObject>>? {
         return Observable.create{ observer in
             Alamofire.request(self.URL+uri, method: method, parameters: params, encoding: encoding, headers: nil)
                 .responseString(completionHandler:  { (response) in
-                    print("\(response.request?.httpBody)")
+                    NSLog("response: \(response): end")
                     switch response.result {
                         case .failure(let error):
                             observer.on(.error(error))
@@ -35,7 +35,6 @@ class EntitiesParser {
                                 observer.on(.completed)
                         }
                     }
-
                 })
             
             return Disposables.create()
@@ -49,8 +48,6 @@ class EntitiesParser {
     
     func getUser(name: String, response: Dictionary<String, AnyObject>?) -> User? {
         let token = response?["token"] as! String
-        UserDefaults.standard.set(token, forKey: "token")
-        UserDefaults.standard.synchronize()
         return User(name: name, token: token)
     }
     
@@ -75,6 +72,10 @@ class EntitiesParser {
     }
     
     func deleteFilm(response: Dictionary<String, AnyObject>?) -> String? {
+        return response?["dsc"] as? String
+    }
+    
+    func addRateToFilm(response: Dictionary<String, AnyObject>?) -> String? {
         return response?["dsc"] as? String
     }
     

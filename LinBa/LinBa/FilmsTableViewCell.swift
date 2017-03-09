@@ -20,14 +20,12 @@ protocol FilmCardDelegate: NSObjectProtocol {
 class FilmsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var ivFilm: UIImageView!
-    
     @IBOutlet weak var lFilmName: UILabel!
-   
     @IBOutlet weak var lFilmRating: UILabel!
-
     @IBOutlet weak var lFilmProducer: UILabel!
-  
-    @IBOutlet weak var lFilmCountries: UILabel!
+    @IBOutlet weak var lFilmCountries: UILabel!    
+    @IBOutlet weak var bTrailer: UIButton!
+    
     
     var url: String? = nil
     
@@ -36,6 +34,7 @@ class FilmsTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        bTrailer.setRoundedBorder(withColor: UIColor(netHex: 0x2ED4C6))
         // Initialization code
     }
     
@@ -62,7 +61,7 @@ class FilmsTableViewCell: UITableViewCell {
             , completionHandler: nil)
         }
         if let lFilmNameItem = lFilmName {
-            lFilmNameItem.text = filmCard.film.name! + " \((filmCard.film.year!))"
+            lFilmNameItem.text = filmCard.film.name! + " (\(filmCard.film.year!))"
         }
         if let lFilmRatingItem = lFilmRating {
             lFilmRatingItem.text = "rating: " + "\(filmCard.film.rate!)"
@@ -84,13 +83,15 @@ class FilmsTableViewCell: UITableViewCell {
             rColor = .red
         }
         if rating > 5.0 && rating < 7.0 {
-            rColor = .yellow
+            rColor = UIColor(netHex: 0xEBDF30)
         }
         if rating > 7.0 {
             rColor = .green
         }
         return rColor
     }
+    
+    
     
 
 }

@@ -17,6 +17,7 @@ protocol FavoriteFilmCellDelegate: NSObjectProtocol {
 class FavoriteFilmCardsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     var favoriteFilmCards: [FilmCard]
+    var observer: RatingButtonDelegate?
     
     weak var favoriteFilmDelegate: FavoriteFilmCellDelegate?
     
@@ -26,10 +27,14 @@ class FavoriteFilmCardsDataSource: NSObject, UITableViewDataSource, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteTableViewCell.reuseIdentifier(), for: indexPath)
+        cell.selectionStyle = .none
         let favoriteFilmCardsItem = favoriteFilmCards[indexPath.row]
         let favoriteFilmCardCell = cell as! FavoriteTableViewCell
         favoriteFilmCardCell.ivFavoriteFilm.kf.indicatorType = .activity
         favoriteFilmCardCell.setData(favoriteFilmCard: favoriteFilmCardsItem)
+        favoriteFilmCardCell.delegate = observer
+        favoriteFilmCardCell.filmId = favoriteFilmCardsItem.film.id
+        cell.layoutIfNeeded()
         return cell
     }
     

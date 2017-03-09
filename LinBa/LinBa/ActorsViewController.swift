@@ -21,6 +21,9 @@ class ActorsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Actors"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.tintColor = .white
         self.actorTableView.dataSource = actorsDataSource
         self.actorTableView.delegate = actorsDataSource
 

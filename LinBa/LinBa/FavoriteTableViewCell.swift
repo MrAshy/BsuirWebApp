@@ -8,7 +8,10 @@
 
 import UIKit
 import Kingfisher
-import Cosmos
+
+protocol RatingButtonDelegate: NSObjectProtocol {
+    func getFilmIdForRate(filmId: Int)
+}
 
 
 
@@ -19,12 +22,15 @@ class FavoriteTableViewCell: UITableViewCell {
     @IBOutlet weak var lFilmRating: UILabel!
     @IBOutlet weak var lFilmProducer: UILabel!
     @IBOutlet weak var lFilmCountries: UILabel!
+    @IBOutlet weak var bRate: UIButton!
     
+    weak var delegate: RatingButtonDelegate?
+    var filmId: Int? = nil
     
-    @IBOutlet weak var ratingStarsView: CosmosView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        bRate.setRoundedBorder(withColor: UIColor(netHex: 0x2ED4C6))
         // Initialization code
     }
     
@@ -49,7 +55,7 @@ class FavoriteTableViewCell: UITableViewCell {
                 , completionHandler: nil)
         }
         if let lFilmNameItem = lFilmName {
-            lFilmNameItem.text = favoriteFilmCard.film.name! + " \((favoriteFilmCard.film.year!))"
+            lFilmNameItem.text = favoriteFilmCard.film.name! + " (\(favoriteFilmCard.film.year!))"
         }
         if let lFilmRatingItem = lFilmRating {
             lFilmRatingItem.text = "rating: " + "\(favoriteFilmCard.film.rate!)"
@@ -64,24 +70,27 @@ class FavoriteTableViewCell: UITableViewCell {
         
     }
     
-    func changeRating() {
-        ratingStarsView.didTouchCosmos = { rating in
-            print("\(rating)")
-        }
-    }
-    
     func setRatingColor(rating: Double) -> UIColor {
         var rColor: UIColor = .clear
         if rating < 5.0 {
             rColor = .red
         }
         if rating > 5.0 && rating < 7.0 {
-            rColor = .yellow
+            rColor = UIColor(netHex: 0xEBDF30)
         }
         if rating > 7.0 {
             rColor = .green
         }
         return rColor
     }
+    
+    @IBAction func addRateToFilm(_ sender: UIButton) {
+        if delegate != nil {
+            if let filmIdItem = filmId {
+                self.delegate?.getFilmIdForRate(filmId: filmIdItem)
+            }
+        }
+    }
+    
 
 }

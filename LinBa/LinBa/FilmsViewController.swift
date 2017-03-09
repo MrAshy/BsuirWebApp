@@ -15,11 +15,18 @@ class FilmsViewController: UIViewController, FilmsTrailerDelegate {
     
     @IBOutlet weak var progress: UIActivityIndicatorView!
     
+    let disposeBag = DisposeBag()
+    
     let filmsCardsPresenter = FilmCardsPresenter()
     let filmCardsDataSource = FilmCardsDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.filmsTableView.estimatedRowHeight = 100.0
+        self.filmsTableView.rowHeight = UITableViewAutomaticDimension
+        self.navigationItem.title = "Films"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.tintColor = .white
         filmCardsDataSource.observer = self 
         self.filmsTableView.dataSource = filmCardsDataSource
         self.filmsTableView.delegate = filmCardsDataSource
@@ -73,7 +80,9 @@ extension FilmsViewController: FilmCardDelegate {
             }, onError: { (error) in
                 let err = error
                 self.showAlert(message: err.localizedDescription, success: false, title: "FAILED")
-            }).addDisposableTo(DisposeBag())
+            }, onCompleted: {() in
+                print("complete add")
+            }).addDisposableTo(disposeBag)
         
     }
     

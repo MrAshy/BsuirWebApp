@@ -19,6 +19,7 @@ class ActorsDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ActorTableViewCell.reuseIdentifier(), for: indexPath)
+        cell.selectionStyle = .none
         let actorItem = actors[indexPath.row]
         let actorCell = cell as! ActorTableViewCell
         actorCell.ivActor.kf.indicatorType = .activity
@@ -30,7 +31,4 @@ class ActorsDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
         return actors.count
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
-    }
 }

@@ -10,6 +10,7 @@
 		2FC109765E3D43B6D9B5CF9C /* Pods_LinBaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F840A24777EC3935962250F /* Pods_LinBaTests.framework */; };
 		67D67B7D22E85A76B29E2FBE /* Pods_LinBaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B3D025282A6DD372BD1EE02 /* Pods_LinBaUITests.framework */; };
 		70754DC286B6D9FD6A2267A1 /* Pods_LinBa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724712345C59797A5CEB1DB3 /* Pods_LinBa.framework */; };
+		DE0FB3CA1E6F403100EEB0A2 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0FB3C91E6F403100EEB0A2 /* RatingViewController.swift */; };
 		DE3516E21E48D99B008EF2B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3516E11E48D99B008EF2B7 /* AppDelegate.swift */; };
 		DE3516E41E48D99B008EF2B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3516E31E48D99B008EF2B7 /* ViewController.swift */; };
 		DE3516E71E48D99B008EF2B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE3516E51E48D99B008EF2B7 /* Main.storyboard */; };
@@ -42,6 +43,8 @@
 		DECCD6BC1E6E06FC00CBBF22 /* ActorsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECCD6BB1E6E06FC00CBBF22 /* ActorsProtocol.swift */; };
 		DECCD6BE1E6E073800CBBF22 /* ActorsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECCD6BD1E6E073800CBBF22 /* ActorsPresenter.swift */; };
 		DECCD6C01E6E084A00CBBF22 /* ActorsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECCD6BF1E6E084A00CBBF22 /* ActorsDataSource.swift */; };
+		DED476151E704323005AFCB2 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED476141E704323005AFCB2 /* UIButton.swift */; };
+		DED476171E704417005AFCB2 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED476161E704417005AFCB2 /* UIColor.swift */; };
 		DEFBA99D1E520E1D002A99E6 /* AutorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFBA99C1E520E1D002A99E6 /* AutorizationViewController.swift */; };
 		DEFBA99F1E52166E002A99E6 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFBA99E1E52166E002A99E6 /* RegistrationViewController.swift */; };
 		DEFBA9A11E521A0A002A99E6 /* ServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFBA9A01E521A0A002A99E6 /* ServerAPI.swift */; };
@@ -73,6 +76,7 @@
 		7F840A24777EC3935962250F /* Pods_LinBaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LinBaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B3D025282A6DD372BD1EE02 /* Pods_LinBaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LinBaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8991B17DE9BE547088BE7A /* Pods-LinBa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LinBa.release.xcconfig"; path = "Pods/Target Support Files/Pods-LinBa/Pods-LinBa.release.xcconfig"; sourceTree = "<group>"; };
+		DE0FB3C91E6F403100EEB0A2 /* RatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 		DE3516DE1E48D99B008EF2B7 /* LinBa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinBa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE3516E11E48D99B008EF2B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE3516E31E48D99B008EF2B7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +115,8 @@
 		DECCD6BB1E6E06FC00CBBF22 /* ActorsProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActorsProtocol.swift; sourceTree = "<group>"; };
 		DECCD6BD1E6E073800CBBF22 /* ActorsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActorsPresenter.swift; sourceTree = "<group>"; };
 		DECCD6BF1E6E084A00CBBF22 /* ActorsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActorsDataSource.swift; sourceTree = "<group>"; };
+		DED476141E704323005AFCB2 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		DED476161E704417005AFCB2 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		DEFBA99C1E520E1D002A99E6 /* AutorizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutorizationViewController.swift; sourceTree = "<group>"; };
 		DEFBA99E1E52166E002A99E6 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		DEFBA9A01E521A0A002A99E6 /* ServerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerAPI.swift; sourceTree = "<group>"; };
@@ -195,6 +201,7 @@
 		DE3516E01E48D99B008EF2B7 /* LinBa */ = {
 			isa = PBXGroup;
 			children = (
+				DED476131E704316005AFCB2 /* Extensions */,
 				DEAFF5A01E6C7E84007C9E8D /* DataSource */,
 				DEAFF59B1E6C7C87007C9E8D /* Protocol */,
 				DEAFF5981E6C7C5F007C9E8D /* Presenter */,
@@ -211,7 +218,6 @@
 				DE3516E81E48D99B008EF2B7 /* Assets.xcassets */,
 				DE3516EA1E48D99B008EF2B7 /* LaunchScreen.storyboard */,
 				DE3516ED1E48D99B008EF2B7 /* Info.plist */,
-				DEFFD68C1E533C7500733191 /* TrailerViewController.swift */,
 			);
 			path = LinBa;
 			sourceTree = "<group>";
@@ -327,6 +333,15 @@
 			name = DataSource;
 			sourceTree = "<group>";
 		};
+		DED476131E704316005AFCB2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DED476141E704323005AFCB2 /* UIButton.swift */,
+				DED476161E704417005AFCB2 /* UIColor.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		DEFBA99B1E520E05002A99E6 /* views */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,6 +351,8 @@
 				DE7CB3961E6801F4009CAA0D /* FavoritesViewController.swift */,
 				DEAFF5871E6C722E007C9E8D /* FilmsViewController.swift */,
 				DECCD6B51E6E04B800CBBF22 /* ActorsViewController.swift */,
+				DEFFD68C1E533C7500733191 /* TrailerViewController.swift */,
+				DE0FB3C91E6F403100EEB0A2 /* RatingViewController.swift */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -632,6 +649,7 @@
 				DECCD6B61E6E04B800CBBF22 /* ActorsViewController.swift in Sources */,
 				DECCD6BA1E6E064B00CBBF22 /* ActorsModel.swift in Sources */,
 				DEAFF59F1E6C7CD0007C9E8D /* FilmCardsProtocol.swift in Sources */,
+				DED476151E704323005AFCB2 /* UIButton.swift in Sources */,
 				DEAFF5A21E6C7EA2007C9E8D /* FilmCardsDataSource.swift in Sources */,
 				DEFFD68D1E533C7500733191 /* TrailerViewController.swift in Sources */,
 				DEAFF5971E6C789E007C9E8D /* FilmCard.swift in Sources */,
@@ -646,9 +664,11 @@
 				DEFBA9A11E521A0A002A99E6 /* ServerAPI.swift in Sources */,
 				DEFBA99F1E52166E002A99E6 /* RegistrationViewController.swift in Sources */,
 				DECCD6B81E6E04FB00CBBF22 /* ActorTableViewCell.swift in Sources */,
+				DED476171E704417005AFCB2 /* UIColor.swift in Sources */,
 				DECCD6BC1E6E06FC00CBBF22 /* ActorsProtocol.swift in Sources */,
 				DE3EA7DA1E6730C00047761A /* Film.swift in Sources */,
 				DE7CB39A1E680533009CAA0D /* EntitiesParser.swift in Sources */,
+				DE0FB3CA1E6F403100EEB0A2 /* RatingViewController.swift in Sources */,
 				DEAFF5881E6C722E007C9E8D /* FilmsViewController.swift in Sources */,
 				DE3516E21E48D99B008EF2B7 /* AppDelegate.swift in Sources */,
 				DECCD6BE1E6E073800CBBF22 /* ActorsPresenter.swift in Sources */,

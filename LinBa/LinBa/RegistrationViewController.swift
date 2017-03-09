@@ -9,17 +9,29 @@
 import UIKit
 import RxSwift
 
-class RegistrationViewController: UIViewController {
+class RegistrationViewController: UIViewController, UITextFieldDelegate {
 
     
     @IBOutlet weak var tfFullname: UITextField!
     @IBOutlet weak var tfPassword: UITextField!
     
+    @IBOutlet weak var bSignUp: UIButton!
+    @IBOutlet weak var bCancel: UIButton!
+    
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bSignUp.setRoundedBorder(withColor: UIColor(netHex: 0x5E5E5E))
+        bCancel.setRoundedBorder(withColor: UIColor(netHex: 0x5E5E5E))
         self.navigationController?.navigationBar.isHidden = true
+        self.tfFullname.delegate = self
+        self.tfPassword.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     override func viewDidAppear(_ animated: Bool) {

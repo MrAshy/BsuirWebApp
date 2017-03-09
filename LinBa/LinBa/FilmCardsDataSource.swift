@@ -23,6 +23,7 @@ class FilmCardsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FilmsTableViewCell.reuseIdentifier(), for: indexPath)
+        cell.selectionStyle = .none
         let filmCardsItem = filmCards[indexPath.row]
         let filmCardCell = cell as! FilmsTableViewCell
         filmCardCell.ivFilm.kf.indicatorType = .activity
@@ -36,6 +37,7 @@ class FilmCardsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if filmCardDelegate != nil {
             self.filmCardDelegate?.getFilmCard(filmCard: filmCards[indexPath.row])
         }

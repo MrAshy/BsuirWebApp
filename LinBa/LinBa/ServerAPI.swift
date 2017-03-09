@@ -94,6 +94,8 @@ class ServerAPI {
         self.parser = EntitiesParser()
     }
     
+    var user: User? = nil
+    
     func createUser(fullName: String, password: String) -> Observable<String?> {
         let params = ["login": fullName, "password": password]
         return (parser.getResponse(uri: "/registration", params: params as Dictionary<String, AnyObject>, method: .post, encoding: JSONEncoding())?.map({ (response) -> String? in
@@ -110,6 +112,7 @@ class ServerAPI {
         })
         if user != nil {
             isSuccess = (user?.map({ (user) -> Bool in
+                self.user = user
                 return true
             }))!
         }
@@ -127,17 +130,19 @@ class ServerAPI {
         })
         if end != nil {
             isLogOutSuccess = end?.map({ (end) -> Bool in
+                self.user = nil
                 return true
             })
         }
-        UserDefaults.standard.removeObject(forKey: "token")
+        
         return isLogOutSuccess!
     }
     
     func getFilms() -> Observable<[Film]?> {
         let tokenStr = getToken()
         let params = ["token": tokenStr]
-        return (parser.getResponse(uri: "/data/films", params: params as Dictionary<String, AnyObject>, method: .get, encoding: URLEncoding())?.map({ (response) -> [Film]? in
+        return (parser.getResponse(uri: "/data/films", params: params as Dictionary<String, AnyObject>, method: .get, encoding: URLEncoding())?
+            .map({ (response) -> [Film]? in
             self.parser.getFilms(response: response)
         }))!
     }
@@ -146,7 +151,8 @@ class ServerAPI {
     func getActors() -> Observable<[Actor]?> {
         let tokenStr = getToken()
         let params = ["token": tokenStr]
-        return (parser.getResponse(uri: "/data/actors/all", params: params as Dictionary<String, AnyObject>, method: .get, encoding: URLEncoding())?.map({ (response) -> [Actor]? in
+        return (parser.getResponse(uri: "/data/actors/all", params: params as Dictionary<String, AnyObject>, method: .get, encoding: URLEncoding())?
+            .map({ (response) -> [Actor]? in
             self.parser.getActors(response: response)
         }))!
     }
@@ -154,7 +160,8 @@ class ServerAPI {
     func getActorsByFilmId(filmId: Int) -> Observable<[Actor]?> {
         let tokenStr = getToken()
         let params = ["token": tokenStr, "id": filmId] as [String : Any]
-        return (parser.getResponse(uri: "/data/actors/all", params: params as Dictionary<String, AnyObject>, method: .get, encoding: URLEncoding())?.map({ (response) -> [Actor]? in
+        return (parser.getResponse(uri: "/data/actors/film", params: params as Dictionary<String, AnyObject>, method: .get, encoding: URLEncoding())?
+            .map({ (response) -> [Actor]? in
             self.parser.getActors(response: response)
         }))!
     }
@@ -162,7 +169,8 @@ class ServerAPI {
     func getFavoriteFilms() -> Observable<[Film]?> {
         let tokenStr = getToken()
         let params = ["token": tokenStr]
-        return (parser.getResponse(uri: "/usr/favorites", params: params as Dictionary<String, AnyObject>, method: .get, encoding: URLEncoding())?.map({ (response) -> [Film]? in
+        return (parser.getResponse(uri: "/usr/favorites", params: params as Dictionary<String, AnyObject>, method: .get, encoding: URLEncoding())?
+            .map({ (response) -> [Film]? in
             self.parser.getFilms(response: response)
         }))!
     }
@@ -170,7 +178,8 @@ class ServerAPI {
     func getProducers() -> Observable<[Producer]?> {
         let tokenStr = getToken()
         let params = ["token": tokenStr]
-        return (parser.getResponse(uri: "/data/producers/all", params: params as Dictionary<String, AnyObject>, method: .get, encoding: URLEncoding())?.map({ (response) -> [Producer]? in
+        return (parser.getResponse(uri: "/data/producers/all", params: params as Dictionary<String, AnyObject>, method: .get, encoding: URLEncoding())?
+            .map({ (response) -> [Producer]? in
             self.parser.getProducers(response: response)
         }))!
     }
@@ -178,23 +187,34 @@ class ServerAPI {
     func addFilmToFavorites(filmId: Int) -> Observable<String?> {
         let tokenStr = getToken()
         let params = ["token": tokenStr, "filmId": filmId] as [String : Any]
-        return (parser.getResponse(uri: "/usr/favorites/add", params: params as Dictionary<String, AnyObject>, method: .post, encoding: JSONEncoding())?.map({ (response) -> String? in
-            self.parser.addFilm(response: response)
+        return (parser.getResponse(uri: "/usr/favorites/add", params: params as Dictionary<String, AnyObject>, method: .post, encoding: JSONEncoding())?
+            .map({ (response) -> String? in
+                self.parser.addFilm(response: response)
         }))!
     }
     
     func deleteFilmFromFavorites(filmId: Int) -> Observable<String?> {
         let tokenStr = getToken()
         let params = ["token": tokenStr, "filmId": filmId] as [String : Any]
-        return (parser.getResponse(uri: "/usr/favorites/delete", params: params as Dictionary<String, AnyObject>, method: .post, encoding: JSONEncoding.default)?.map({ (response) -> String? in
-            self.parser.deleteFilm(response: response)
+        return (parser.getResponse(uri: "/usr/favorites/delete", params: params as Dictionary<String, AnyObject>, method: .post, encoding: JSONEncoding())?
+            .map({ (response) -> String? in
+                self.parser.deleteFilm(response: response)
+        }))!
+    }
+    
+    func addRateToFilm(filmId: Int, rate: Int) -> Observable<String?> {
+        let tokenStr = getToken()
+        let params = ["token": tokenStr, "filmId": filmId, "rate": rate] as [String : Any]
+        return (parser.getResponse(uri: "/usr/rate", params: params as Dictionary<String, AnyObject>, method: .post, encoding: JSONEncoding())?
+            .map({ (response) -> String? in
+                self.parser.addRateToFilm(response: response)
         }))!
     }
     
     func getToken() -> String {
         var tokenStr: String!
-        if let token = UserDefaults.standard.value(forKey: "token") {
-            tokenStr = token as! String
+        if let userItem = self.user {
+            tokenStr = userItem.token!
         }
         return tokenStr
     }
